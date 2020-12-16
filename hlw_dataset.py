@@ -36,17 +36,18 @@ class HLWDataset(Dataset):
 
 		# read image list
 		img_db = open(data_file, 'r')
-		self.images = ['hlw/images/' + f[:-1] for f in img_db.readlines()]
+		#self.images = ['hlw/images/' + f[:-1] for f in img_db.readlines()]
+		self.images = ['D:/hlw_1_2/images/'  + f[:-1] for f in img_db.readlines()]
 		img_db.close()
 
 		# read ground truth labels
-		metadata_file = open('hlw/metadata.csv')
+		metadata_file = open('D:/hlw_1_2/metadata.csv')
 		metadata = csv.reader(metadata_file)
 
 		self.gt = [None] * len(self.images)
 
 		for row in metadata:
-			cur_image = 'hlw/images/' + row[0]
+			cur_image = 'D:/hlw_1_2/images/' + row[0]
 			if cur_image in self.images:
 				idx = self.images.index(cur_image)
 
